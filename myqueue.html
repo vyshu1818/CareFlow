@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareFlow — My Queue</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="index.html"><span class="logo">✚</span> CareFlow</a>
+  <div class="nav-links">
+    <a href="index.html">Hospitals</a>
+    <a href="patient.html">Book Appointment</a>
+    <a href="myqueue.html" class="active">My Queue</a>
+    <a href="receptionist.html">Reception</a><a href="doctor.html">Doctor Console</a>
+  </div>
+</nav>
+
+<main class="queue-page">
+  <section id="queueLogin" class="queue-login-card">
+    <div class="queue-login-icon">🔐</div>
+    <span class="eyebrow">MY QUEUE ACCESS</span>
+    <h1>View your queue</h1>
+    <p>Enter your hospital, registered name and the phone number used during booking. Your **phone number itself is your My Queue password** for this demo.</p>
+    <form id="queueLoginForm" class="queue-login-form">
+      <label>Hospital
+        <select id="queueLoginHospital" required></select>
+      </label>
+      <label>Your name
+        <input id="queueLoginName" type="text" placeholder="Enter the name used for booking" autocomplete="name" required>
+      </label>
+      <label>My Queue password (your phone number)
+        <input id="queueLoginPassword" type="password" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="Enter the same 10-digit phone number" autocomplete="tel" required>
+        <small class="field-hint">Your booking phone number is your password.</small>
+      </label>
+      <button class="btn primary" type="submit">View my token</button>
+      <p id="queueLoginError" class="login-error hidden">The hospital, name or phone number does not match an active appointment.</p>
+    </form>
+    <div class="login-note">🔒 Demo access is checked locally in this browser. Do not use real patient data in this prototype.</div>
+  </section>
+
+  <div id="queueEmpty" class="empty-state hidden">
+    <div class="empty-icon">📋</div>
+    <h2>No active appointment</h2>
+    <p>No matching active appointment was found for the selected hospital and name.</p>
+    <a class="btn primary" href="patient.html">Book an appointment</a>
+  </div>
+
+  <section id="queueContent" class="hidden">
+    <div class="queue-top">
+      <div><span class="eyebrow">MY CAREFLOW VISIT</span><h1 id="qHospital">CareFlow</h1><p id="qDoctor"></p></div>
+      <div id="qStatus" class="status-pill">● Waiting</div>
+    </div>
+
+    <div class="queue-layout">
+      <div class="token-card">
+        <div class="token-label">YOUR DIGITAL TOKEN</div>
+        <div id="qToken" class="token">—</div>
+        <div id="qName" class="token-name">—</div>
+        <div class="queue-progress"><span id="progress"></span></div>
+        <div class="queue-stats queue-stats-three">
+          <div><b id="qAhead">0</b><small>Patients ahead</small></div>
+          <div><b id="qPosition">—</b><small>Your position</small></div>
+          <div><b id="qWait">0 min</b><small>Estimated wait</small></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Appointment details</h3>
+        <div class="info-row"><span>Doctor</span><b id="detailDoctor">—</b></div>
+        <div class="info-row"><span>Age / Gender</span><b id="detailAgeGender">—</b></div>
+        <div class="info-row"><span>Date</span><b id="detailDate">—</b></div>
+        <div class="info-row"><span>Slot</span><b id="detailSlot">—</b></div>
+        <div class="info-row"><span>Queue type</span><b id="detailType">—</b></div><div class="info-row"><span>Arrival plan</span><b id="arrivalPlan">—</b></div>
+        <div id="emergencyNotice" class="notice hidden"></div>
+        <div class="queue-actions">
+          <button id="cancelAppointmentBtn" class="btn danger" onclick="cancelAppointment(JSON.parse(localStorage.getItem('careflowCurrent')||'null')?.id)">Cancel appointment</button>
+          <button id="rescheduleAppointmentBtn" class="btn ghost" onclick="window.location.href='patient.html'">Book another appointment</button>
+          <button class="btn primary" onclick="location.reload()">Refresh queue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-card"><span class="how-icon">⚡</span><div><b id="smartQueueTitle">Smart queue updates</b><p id="smartQueueText">When reception calls the next patient, your status changes here. Your appointment remains available from the My Queue menu.</p></div></div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

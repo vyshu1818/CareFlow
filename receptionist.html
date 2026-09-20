@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareFlow — Reception Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="index.html"><span class="logo">✚</span> CareFlow</a>
+  <div class="nav-links"><a href="index.html">Hospitals</a><a href="patient.html">Book Appointment</a><a href="myqueue.html">My Queue</a><a href="receptionist.html" class="active">Reception</a><a href="doctor.html">Doctor Console</a></div>
+</nav>
+
+<main class="reception-page">
+  <section id="receptionLogin" class="reception-login">
+    <div class="login-card">
+      <span class="eyebrow">HOSPITAL DESK ACCESS</span>
+      <h1>Receptionist login</h1>
+      <p>Demo access for the selected hospital desk. Production deployment should move authentication and patient data to a secure backend.</p>
+      <form id="receptionLoginForm">
+        <label>Hospital
+          <select id="loginHospital" required></select>
+        </label>
+        <label>Password
+          <input id="loginPassword" type="password" placeholder="Enter hospital desk password" required autocomplete="current-password">
+        </label>
+        <button class="btn primary" type="submit">Enter reception dashboard</button>
+        <p id="loginError" class="login-error hidden">Incorrect hospital or password.</p>
+      </form>
+      <div class="login-note">🔒 Prototype login only — credentials are not secure until moved to a backend.</div>
+    </div>
+  </section>
+  <section id="receptionDashboard" class="hidden">
+  <div class="dashboard-head"><div><span class="eyebrow">CARE TEAM CONSOLE</span><h1>Reception dashboard</h1><p>Your hospital desk can triage urgent requests and manage only patients registered at this hospital. Normal patients are handled by doctor-specific appointment queues.</p></div><div class="dashboard-clock" id="clock">--:--</div></div>
+  <div class="reception-filter">
+    <label>Receptionist hospital
+      <select id="receptionHospital" required></select>
+    </label>
+    <label>Doctor
+      <select id="receptionDoctor">
+        <option value="">All doctors</option>
+      </select>
+    </label>
+    <p>🔒 Patient records are filtered by the selected hospital and doctor.</p>
+  </div>
+  <div class="metric-grid">
+    <div class="metric"><span>IN QUEUE</span><b id="metricTotal">0</b></div>
+    <div class="metric"><span>EMERGENCY</span><b id="metricEmergency">0</b></div>
+    <div class="metric"><span>VERIFIED</span><b id="metricVerified">0</b></div>
+    <div class="metric"><span>CALLED</span><b id="metricCalled">0</b></div>
+  </div>
+  <div class="table-card">
+    <div class="table-head"><h2>Patient schedule — selected hospital / doctor</h2><div><button class="btn small" onclick="loadReceptionistQueue()">↻ Refresh</button> <button class="btn small logout-btn" onclick="logoutReceptionist()">Logout</button></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Token</th><th>Patient</th><th>Age / Gender</th><th>Hospital / Doctor</th><th>Appointment date</th><th>Appointment time</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody id="receptionQueue"></tbody></table></div>
+    <div id="noQueue" class="no-queue hidden">No patients in the queue yet. <a href="patient.html">Create a booking</a>.</div>
+  </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareFlow — Smart Hospital Queue</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="index.html"><span class="logo">✚</span> CareFlow</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Find Care</a>
+    <a href="patient.html">My Appointment</a>
+    <a href="receptionist.html">Reception</a><a href="doctor.html">Doctor Console</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">SMART CLINIC • VIRTUAL WAITING ROOM</span>
+    <h1>Healthcare without the <span>waiting-room stress.</span></h1>
+    <p>Choose a hospital, pick a doctor, book your appointment and get a personalized arrival plan before you leave home.</p>
+    <div class="hero-actions">
+      <a href="#hospitals" class="btn primary">Explore hospitals ↓</a>
+      <a href="myqueue.html" class="btn ghost">View my queue</a>
+    </div>
+    <div class="trust-row">
+      <span>✓ 3-step care journey</span><span>✓ Doctor-specific booking</span><span>✓ Emergency verification</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="pulse-ring"></div>
+    <div class="hero-card journey-card">
+      <div class="mini-top"><span>CARE FLOW • 3 STEPS</span><span class="ready-dot">● Simple</span></div>
+      <div class="journey-icon">✦</div>
+      <div class="journey-title">Your care journey.</div>
+      <div class="muted">From finding the right doctor to completing your visit — everything in one clear flow.</div>
+      <div class="journey-steps">
+        <div class="journey-step">
+          <span class="step-number">1</span>
+          <div><b>Find your care</b><small>Choose a hospital and doctor.</small></div>
+        </div>
+        <div class="journey-line"></div>
+        <div class="journey-step">
+          <span class="step-number">2</span>
+          <div><b>Book your visit</b><small>Select an available appointment.</small></div>
+        </div>
+        <div class="journey-line"></div>
+        <div class="journey-step">
+          <span class="step-number">3</span>
+          <div><b>Arrive &amp; consult</b><small>Follow your queue and meet your doctor.</small></div>
+        </div>
+      </div>
+      <div class="journey-note">✓ Doctor-specific booking &nbsp; • &nbsp; ✓ Emergency support &nbsp; • &nbsp; ✓ Digital queue</div>
+    </div>
+  </div>
+</section>
+
+<section id="hospitals" class="section">
+  <div class="section-head">
+    <div><span class="eyebrow">TOP CARE CENTRES</span><h2>Choose your hospital</h2></div>
+    <span class="count-badge">10 hospitals</span>
+  </div>
+  <div id="hospitalGrid" class="hospital-grid"></div>
+</section>
+
+<footer>CareFlow © 2026 • Smart healthcare queue experience</footer>
+<script src="script.js"></script>
+</body>
+</html>

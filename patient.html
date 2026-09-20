@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareFlow — Book Appointment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="index.html"><span class="logo">✚</span> CareFlow</a>
+  <div class="nav-links"><a href="index.html">Hospitals</a><a href="patient.html" class="active">Book Appointment</a><a href="myqueue.html">My Queue</a><a href="receptionist.html">Reception</a><a href="doctor.html">Doctor Console</a></div>
+</nav>
+
+<main class="booking-page">
+  <div class="booking-head">
+    <a class="back" href="index.html">← Back to hospitals</a>
+    <span class="eyebrow">DIGITAL BOOKING PROTOTYPE</span>
+    <h1>Book your appointment</h1>
+    <p>Select a hospital and doctor. Your digital token will be created instantly.</p>
+  </div>
+
+  <div class="booking-layout">
+    <form id="bookingForm" class="glass-form">
+      <div class="step-title"><span>01</span> Patient details</div>
+      <div class="two-col">
+        <label>Patient name<input id="name" required placeholder="Enter full name"></label>
+        <label>Phone number<input id="phone" required type="tel" pattern="[0-9]{10}" placeholder="10-digit mobile number"></label>
+        <label>Age<input id="age" required type="number" min="0" max="120" placeholder="Age in years"></label>
+        <label>Gender<select id="gender" required><option value="">Choose gender</option><option value="Female">Female</option><option value="Male">Male</option><option value="Other">Other</option></select></label>
+      </div>
+
+      <div class="step-title"><span>02</span> Care selection</div>
+      <label>Hospital<select id="hospital" required></select></label>
+      <div class="two-col">
+        <label id="dateField">Appointment date<input id="appointmentDate" type="date" required></label>
+        <label>Doctor<select id="doctor" required></select></label>
+        <label id="slotField">Time slot<select id="slot" required></select><small class="field-hint">Select a doctor to see their consultation duration, daily capacity and available slots. Lunch break: 12:30 PM–2:00 PM.</small></label>
+      </div>
+
+      <label class="emergency-box">
+        <input type="checkbox" id="emergency">
+        <span><b>Emergency — Direct Doctor Consultation</b><small>If selected, no time slot or waiting time is shown. Proceed directly to the selected hospital and consult the doctor.</small></span>
+      </label>
+
+      <button class="btn primary full" type="submit">Confirm appointment →</button>
+      <p class="form-note">By booking, you receive a digital token and access to the virtual waiting room.</p>
+    </form>
+
+    <aside class="booking-preview">
+      <div class="preview-label">YOUR CAREFLOW PASS</div>
+      <div class="preview-icon">✚</div>
+      <h3 id="previewHospital">Select a hospital</h3>
+      <p id="previewDoctor">Choose a doctor to continue</p>
+      <div class="preview-line"></div>
+      <div class="preview-stat"><span>Appointment date</span><b id="previewDate">Today</b></div>
+      <div class="preview-stat"><span>Patient</span><b id="previewPatient">—</b></div>
+      <div class="preview-stat"><span>Daily doctor capacity</span><b id="previewCapacity">—</b></div>
+      <div class="preview-stat"><span>Estimated consultation</span><b id="previewDuration">—</b></div>
+      <div class="preview-stat"><span>Queue type</span><b id="previewType">Standard</b></div>
+      <div class="security">🔒 Demo data is stored locally in this browser. Do not enter real patient information.</div>
+    </aside>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

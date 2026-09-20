@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareFlow — Doctor Console</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav"><a class="brand" href="index.html"><span class="logo">✚</span> CareFlow</a><div class="nav-links"><a href="index.html">Hospitals</a><a href="patient.html">Book Appointment</a><a href="myqueue.html">My Queue</a><a href="receptionist.html">Reception</a><a href="doctor.html" class="active">Doctor Console</a></div></nav>
+<main class="reception-page">
+<section id="doctorLogin" class="reception-login"><div class="login-card"><span class="eyebrow">CARE TEAM CONSOLE</span><h1>Doctor console</h1><p>For the hackathon demo, sign in through the hospital reception demo first, then choose the doctor you want to simulate.</p><a class="btn primary" href="receptionist.html">Open reception login</a></div></section>
+<section id="doctorDashboard" class="hidden">
+<div class="dashboard-head"><div><span class="eyebrow">DOCTOR WORKFLOW</span><h1 id="doctorTitle">Doctor console</h1><p>Choose a date to view that doctor's scheduled patient queue and update consultation status.</p></div><div class="dashboard-clock" id="doctorClock">--:--</div></div>
+<div class="reception-filter doctor-filter"><label>Doctor<select id="doctorConsoleSelect"></select></label><label>Appointment date<input id="doctorConsoleDate" type="date"></label><p>Patient records are filtered by the selected doctor and appointment date. Verified emergency cases appear only for today.</p></div>
+<div class="metric-grid"><div class="metric"><span>WAITING</span><b id="doctorWaiting">0</b></div><div class="metric"><span>CALLED</span><b id="doctorCalled">0</b></div><div class="metric"><span>RECEIVED</span><b id="doctorReceived">0</b></div><div class="metric"><span>NEXT TOKEN</span><b id="doctorNext">—</b></div></div>
+<div class="table-card"><div class="table-head"><h2 id="doctorQueueHeading">Doctor queue</h2><button class="btn small" onclick="loadDoctorQueue()">↻ Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Token</th><th>Patient</th><th>Age / Gender</th><th>Appointment</th><th>Slot</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody id="doctorQueue"></tbody></table></div><div id="doctorNoQueue" class="no-queue hidden">No active appointments for this doctor on the selected date.</div></div>
+</section></main><script src="script.js"></script></body></html>
